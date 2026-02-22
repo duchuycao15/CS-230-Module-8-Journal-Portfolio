@@ -1,62 +1,25 @@
 # CS-230-Module-8-Journal-Portfolio
 
-Summarize The Gaming Room client and software requirements?
+1. Summarize The Gaming Room client and software requirements?
 
-The client, The Gaming Room, wants to expand their existing game so it can be played by more users across multiple platforms. The main goal is to move from a single-platform implementation to a scalable, networked solution that supports multiple concurrent players and game sessions. Key requirements include:
+The client, The Gaming Room, wants to expand their existing game into a solution that can support more users and operate across multiple platforms. The core requirement is to move toward a scalable, networked design that allows multiple users to play at the same time while keeping the game state consistent. This includes supporting multiple game sessions and organizing players (and teams, if applicable) in a structured way. The system should be reliable and maintainable, and it should be designed with performance and basic security expectations in mind, since it will be accessed by many users through a shared online environment.
 
-A centralized server-based design so many users can connect at the same time.
-
-Support for multiple teams/players, organized into game sessions.
-
-Consistent game rules and state management so players see the same results.
-
-A solution that can scale (performance + capacity) as the user base grows.
-
-Basic security and reliability expectations appropriate for an online product (controlled access, stable uptime, and protection of game data/session state).
-
-What you did well in the documentation ?
+2. What you did well in the documentation ?
 
 I did well at organizing the SDD so it reads like a clear decision trail: requirements → constraints → architecture → recommendations. I also did a strong job translating the problem into a domain model (games, teams, players) and describing how the system should manage those objects consistently. Another area I did well was identifying major technical constraints early (platform compatibility, concurrency, scalability, and maintainability) so the design choices were tied to real needs instead of personal preference.
 
-What was helpful about working through the design document when developing code? 
+3. What was helpful about working through the design document when developing code? 
 
-Working through the design document made development more structured because it forced me to define the system boundaries and responsibilities before coding. The domain model and architectural decisions helped me avoid “random implementation,” especially around:
+Working through the design document made development easier because it forced me to plan system responsibilities and behaviors before writing code. By defining the system architecture, the relationships between key objects, and the flow of major actions ahead of time, I reduced confusion during implementation and avoided redesigning core ideas mid-way through development. It was especially helpful for planning how the system should manage shared game state, how it should handle multiple users at the same time, and how it should enforce consistent rules (such as preventing duplicate entities and maintaining valid game/session state).
 
-Object ownership and lifecycle (what gets created once vs. per session).
+4. What you would revise and how you would improve it? 
 
-Concurrency concerns (what happens when many users create/join games at the same time).
+If I could revise the design document, I would make it more implementation-ready by adding more concrete technical details. For example, I would expand the security portion by outlining a clearer approach for access control and data protection, and I would include more details about how game/session data should be stored and recovered if the system restarts or fails. I would also improve the document by adding more diagrams or sequence-style descriptions for key workflows like creating a game, joining a session, and starting gameplay, because those details reduce ambiguity and make the design easier to implement consistently.
 
-Consistency rules (unique naming, preventing duplicates, enforcing valid state).
-Because those decisions were already written down, coding became more about implementation details and less about constantly re-deciding the architecture.
+5. How you interpreted user needs and why user needs matter in design?
 
-What you would revise and how you would improve it? 
+I interpreted user needs by translating what the client wants into specific functional and non-functional requirements. For example, if users need to access the game from different platforms and play concurrently, the design must prioritize compatibility, scalability, and consistent performance. User needs matter because they directly determine whether the software succeeds in real usage; even a well-coded system can fail if it doesn’t meet the expectations of the people using it. Designing around user needs also helps ensure the system is reliable, intuitive, and aligned with the business goals of the client.
 
-If I revised the SDD, I would make the technical sections even more actionable for implementation. Improvements I would add:
+6. Your design approach + techniques/strategies you’d use in the future?
 
-More detailed API/service interface descriptions (inputs/outputs, error cases, and sample calls).
-
-Expanded security section (authentication approach, basic threat considerations, and data protection expectations).
-
-A clearer data persistence plan (what must be stored, how it’s updated, and what happens on restart/failure).
-
-Additional diagrams (for example: sequence diagrams for “create game,” “join team,” and “start round”) to reduce ambiguity.
-These changes would reduce assumptions during coding and make the SDD stronger as a true build guide.
-
-How you interpreted user needs and why user needs matter in design? 
-
-I interpreted user needs by converting the client’s goals into concrete behaviors the software must support (user stories and constraints). For example, if the client expects many users at once, the design must prioritize scalability and concurrency; if the client wants multi-platform access, the architecture should avoid platform-locked decisions. User needs matter because they shape both functional requirements (what the system does) and non-functional requirements (performance, reliability, security, usability). If those needs aren’t captured correctly, the system can be “technically correct” but still fail the client in real use.
-
-Your design approach + techniques/strategies you’d use in the future?
-
-My design approach is to start broad and then tighten: clarify requirements first, choose an architecture that fits the constraints, then validate with small prototypes before full implementation. In the future, I will continue using:
-
-Iterative design (refine in small cycles rather than one big guess).
-
-UML/domain modeling to make relationships and responsibilities explicit.
-
-Architectural decision records (ADRs) to document why key choices were made.
-
-Early planning for concurrency, scaling, and error handling, not as afterthoughts.
-
-Basic testing strategy planning upfront (unit tests for logic + integration tests for workflows).
-These techniques reduce rework, make the system easier to maintain, and keep implementation aligned with client outcomes.
+My design approach is to start by clarifying requirements and constraints, then select an architecture that matches those needs, and finally refine the solution in iterations. In the future, I will continue using strategies such as domain modeling (to clearly define objects and responsibilities), documenting key architectural decisions (so choices are justified and easy to maintain), and planning early for scalability, concurrency, and error handling. I also want to include a clearer testing strategy earlier in the design process, because it improves reliability and makes it easier to validate that the implementation matches the design.
